@@ -32,7 +32,7 @@ class Clients extends Component {
                 Clients{""}
               </h2>
             </div>
-            <col className="md 6" />
+            {/* <col className="md 6" /> */}
           </div>
           <table className="table table-striped">
             <thead className="thead-inverse">
