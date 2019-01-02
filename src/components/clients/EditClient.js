@@ -6,10 +6,26 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import Spinner from "../layout/Spinner";
 
-class EditClients extends Component {
+class EditClient extends Component {
   render() {
-    return <h1>Edit</h1>;
+    const { client } = this.props;
+
+    if (client) {
+      return <div> {client.firstName}</div>;
+    } else {
+    }
   }
 }
 
-export default EditClients;
+EditClient.propTypes = {
+  firestore: PropTypes.object.isRequired
+};
+
+export default compose(
+  firestoreConnect(props => [
+    { collection: "clients", storeAs: "client", doc: props.match.params.id }
+  ]),
+  connect(({ firestore: { ordered } }, props) => ({
+    client: ordered.client && ordered.client[0]
+  }))
+)(EditClient);
