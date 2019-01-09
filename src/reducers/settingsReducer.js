@@ -25,7 +25,7 @@ export default function(state = initialState, action) {
     case ALLOW_REGISTRATION:
       return {
         ...state,
-        allowRegistration: !state.disableBalanceOnAdd
+        allowRegistration: !state.allowRegistration
       };
 
     default:
